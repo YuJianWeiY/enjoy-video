@@ -33,7 +33,7 @@ import java.util.Set;
 @Configuration
 public class CorsConfig implements Filter {
 
-    private final String[] allowedDomain = {"http://localhost:8080", "http://192.168.1.105", "http://localhost:8081"};
+    private final String[] allowedDomain = {"http://localhost:8080", "http://49.235.134.39", "http://yujianwei.love", "http://localhost:8081"};
 
 
     public void doFilter(ServletRequest request, ServletResponse response,
