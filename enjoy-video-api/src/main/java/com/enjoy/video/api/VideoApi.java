@@ -28,9 +28,6 @@ public class VideoApi {
     @Autowired
     private ElasticSearchService elasticSearchService;
 
-    /**
-     * 视频投稿
-     */
     @PostMapping("/videos")
     public JsonResponse<String> addVideos(@RequestBody Video video){
         Long userId = userSupport.getCurrentUserId();
@@ -41,9 +38,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 分页查询视频列表
-     */
     @GetMapping("/videos")
     public JsonResponse<PageResult<Video>> pageListVideos(@RequestParam Integer size,
                                                           @RequestParam Integer no,
@@ -52,9 +46,6 @@ public class VideoApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 视频在线播放
-     */
     @GetMapping("/video-slices")
     public void viewVideoOnlineBySlices(HttpServletRequest request,
                                         HttpServletResponse response,
@@ -62,9 +53,6 @@ public class VideoApi {
         videoService.viewVideoOnlineBySlices(request, response, url);
     }
 
-    /**
-     * 点赞视频
-     */
     @PostMapping("/video-likes")
     public JsonResponse<String> addVideoLike(@RequestParam Long videoId){
         Long userId = userSupport.getCurrentUserId();
@@ -72,9 +60,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 取消点赞视频
-     */
     @DeleteMapping("/video-likes")
     public JsonResponse<String> deleteVideoLike(@RequestParam Long videoId){
         Long userId = userSupport.getCurrentUserId();
@@ -82,9 +67,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 查询视频点赞数量
-     */
     @GetMapping("/video-likes")
     public JsonResponse<Map<String, Object>> getVideoLikes(@RequestParam Long videoId){
         Long userId = null;
@@ -95,10 +77,6 @@ public class VideoApi {
         return new JsonResponse<>(result);
     }
 
-
-    /**
-     * 收藏视频
-     */
     @PostMapping("/video-collections")
     public JsonResponse<String> addVideoCollection(@RequestBody VideoCollection videoCollection){
         Long userId = userSupport.getCurrentUserId();
@@ -106,9 +84,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 更新收藏视频
-     */
     @PutMapping("/video-collections")
     public JsonResponse<String> updateVideoCollection(@RequestBody VideoCollection videoCollection){
         Long userId = userSupport.getCurrentUserId();
@@ -116,9 +91,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 取消收藏视频
-     */
     @DeleteMapping("/video-collections")
     public JsonResponse<String> deleteVideoCollection(@RequestParam Long videoId){
         Long userId = userSupport.getCurrentUserId();
@@ -126,9 +98,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 查询视频收藏数量
-     */
     @GetMapping("/video-collections")
     public JsonResponse<Map<String, Object>> getVideoCollections(@RequestParam Long videoId){
         Long userId = null;
@@ -139,9 +108,6 @@ public class VideoApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 视频投币
-     */
     @PostMapping("/video-coins")
     public JsonResponse<String> addVideoCoins(@RequestBody VideoCoin videoCoin){
         Long userId = userSupport.getCurrentUserId();
@@ -149,9 +115,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 查询视频投币数量
-     */
     @GetMapping("/video-coins")
     public JsonResponse<Map<String, Object>> getVideoCoins(@RequestParam Long videoId){
         Long userId = null;
@@ -162,9 +125,6 @@ public class VideoApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 添加视频评论
-     */
     @PostMapping("/video-comments")
     public JsonResponse<String> addVideoComment(@RequestBody VideoComment videoComment){
         Long userId = userSupport.getCurrentUserId();
@@ -172,9 +132,6 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 分页查询视频评论
-     */
     @GetMapping("/video-comments")
     public JsonResponse<PageResult<VideoComment>> pageListVideoComments(@RequestParam Integer size,
                                                                         @RequestParam Integer no,
@@ -183,18 +140,12 @@ public class VideoApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 获取视频详情
-     */
     @GetMapping("/video-details")
     public JsonResponse<Map<String, Object>> getVideoDetails(@RequestParam Long videoId){
         Map<String, Object> result = videoService.getVideoDetails(videoId);
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 添加视频观看记录
-     */
     @PostMapping("/video-views")
     public JsonResponse<String> addVideoView(@RequestBody VideoView videoView,
                                              HttpServletRequest request){
@@ -211,18 +162,12 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 查询视频播放量
-     */
     @GetMapping("/video-view-counts")
     public JsonResponse<Integer> getVideoViewCounts(@RequestParam Long videoId){
         Integer count = videoService.getVideoViewCounts(videoId);
         return new JsonResponse<>(count);
     }
 
-    /**
-     * 视频内容推荐
-     */
     @GetMapping("/recommendations")
     public JsonResponse<List<Video>> recommend() throws TasteException {
         Long userId = userSupport.getCurrentUserId();
@@ -230,9 +175,6 @@ public class VideoApi {
         return new JsonResponse<>(list);
     }
 
-    /**
-     * 视频帧截取生成黑白剪影
-     */
     @GetMapping("/video-frames")
     public JsonResponse<List<VideoBinaryPicture>> captureVideoFrame(@RequestParam Long videoId,
                                                                     @RequestParam String fileMd5) throws Exception {
@@ -240,9 +182,6 @@ public class VideoApi {
         return new JsonResponse<>(list);
     }
 
-    /**
-     * 查询视频黑白剪影
-     */
     @GetMapping("/video-binary-images")
     public JsonResponse<List<VideoBinaryPicture>> getVideoBinaryImages(@RequestParam Long videoId,
                                                                        Long videoTimestamp,
@@ -255,18 +194,12 @@ public class VideoApi {
         return new JsonResponse<>(list);
     }
 
-    /**
-     * 查询视频标签
-     */
     @GetMapping("/video-tags")
     public JsonResponse<List<VideoTag>> getVideoTagsByVideoId(@RequestParam Long videoId) {
         List<VideoTag> list = videoService.getVideoTagsByVideoId(videoId);
         return new JsonResponse<>(list);
     }
 
-    /**
-     * 删除视频标签
-     */
     @DeleteMapping("/video-tags")
     public JsonResponse<String> deleteVideoTags(@RequestBody JSONObject params) {
         String tagIdList = params.getString("tagIdList");
@@ -275,18 +208,12 @@ public class VideoApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 视频内容推荐(游客版)
-     */
     @GetMapping("/visitor-video-recommendations")
     public JsonResponse<List<Video>> getVisitorVideoRecommendations() {
         List<Video> list = videoService.getVisitorVideoRecommendations();
         return new JsonResponse<>(list);
     }
 
-    /**
-     * 视频内容推荐(整合版)
-     */
     @GetMapping("/video-recommendations")
     public JsonResponse<List<Video>> getVideoRecommendations(@RequestParam String recommendType) {
         Long userId = userSupport.getCurrentUserId();
