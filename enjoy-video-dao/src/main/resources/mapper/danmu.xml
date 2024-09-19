@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.enjoy.video.dao.DanmuDao">
 
-
     <insert id="addDanmu" parameterType="com.enjoy.video.domain.Danmu">
         insert into
             t_danmu(
