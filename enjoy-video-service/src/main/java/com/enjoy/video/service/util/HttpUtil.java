@@ -11,9 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/**
- * Http请求工具类
- */
 public class HttpUtil {
 
 	private static final String CONTENT_TYPE_JSON = "application/json";
@@ -26,11 +23,6 @@ public class HttpUtil {
 
 	private static final Integer CONNECT_TIME_OUT = 120000;
 
-	/**
-	 * http get请求
-	 * @param url 请求链接
-	 * @param params 请求参数
-	 */
 	public static HttpResponse get(String url, Map<String, Object> params) throws Exception {
 		String getUrl = buildGetRequestParams(url, params);
 		URL urlObj = new URL(getUrl);
@@ -48,11 +40,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http get请求  可以配置请求头
-	 * @param url 请求链接
-	 * @param params 请求参数
-	 */
 	public static HttpResponse get(String url,
 								   Map<String, Object> params,
 								   Map<String, Object> headers) throws Exception {
@@ -79,12 +66,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http get请求 返回输出流
-	 * @param url 请求链接
-	 * @param headers 请求头
-	 * @param response 响应
-	 */
 	public static OutputStream get(String url,
 								   Map<String, Object> headers,
 								   HttpServletResponse response) throws Exception {
@@ -116,11 +97,6 @@ public class HttpUtil {
 		return os;
 	}
 
-	/**
-	 * http post请求，请求参数使用map进行封装
-	 * @param url 请求链接地址
-	 * @param params 请求参数
-	 */
 	public static HttpResponse postJson(String url, Map<String, Object> params) throws Exception {
 		URL urlObj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
@@ -144,10 +120,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http post请求，请求参数使用json字符串
-	 * @param url 请求链接地址
-	 */
 	public static HttpResponse postJson(String url, String json) throws Exception {
 		URL urlObj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
@@ -170,11 +142,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http post请求，请求参数使用json字符串, 可以配置请求头
-	 * @param url 请求链接地址
-	 * @param params 请求参数
-	 */
 	public static HttpResponse postJson(String url,
 										Map<String, Object> params,
 										Map<String, Object> headers) throws Exception {
@@ -206,11 +173,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http post请求，请求参数形式为url-encoded
-	 * @param url 请求链接地址
-	 * @param params 请求参数
-	 */
 	public static HttpResponse postUrlEncoded(String url,
 											  Map<String, Object> params) throws Exception {
 		URL urlObj = new URL(url);
@@ -235,11 +197,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http post请求，请求参数形式为form-data
-	 * @param url 请求链接地址
-	 * @param params 请求参数
-	 */
 	public static HttpResponse postFormData(String url,
 											Map<String, Object> params) throws Exception {
 		URL urlObj = new URL(url);
@@ -263,11 +220,6 @@ public class HttpUtil {
 		return new HttpResponse(responseCode,response, cookie);
 	}
 
-	/**
-	 * http post请求，请求参数形式为form-data， 可以设置请求头
-	 * @param url 请求链接地址
-	 * @param params 请求参数
-	 */
 	public static HttpResponse postFormData(String url,
 											Map<String, Object> params,
 											Map<String, Object> headers) throws Exception {
@@ -314,7 +266,6 @@ public class HttpUtil {
 		return postParamBuilder.toString();
 	}
 
-
 	private static String buildGetRequestParams(String url, Map<String, Object> params) throws Exception {
 		StringBuilder sb = new StringBuilder(url);
 		if(params != null && !params.isEmpty()) {
@@ -330,7 +281,6 @@ public class HttpUtil {
 		}
 		return sb.toString();
 	}
-
 
 	private static String writeResponse(int responseCode, BufferedReader br) throws Exception {
 		StringBuilder responseSb = new StringBuilder();
