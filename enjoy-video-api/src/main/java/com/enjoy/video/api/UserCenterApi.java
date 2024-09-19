@@ -18,9 +18,6 @@ public class UserCenterApi {
     @Autowired
     private UserSupport userSupport;
 
-    /**
-     * 查询视频分区
-     */
     @GetMapping("/user-center-video-areas")
     public JsonResponse<Map<String, Integer>> getUserCenterVideoAreas(){
         Long userId = userSupport.getCurrentUserId();
@@ -28,9 +25,6 @@ public class UserCenterApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 分页查询用户视频
-     */
     @GetMapping("/user-center-videos")
     public JsonResponse<PageResult<Video>> pageListUserVideos(@RequestParam Integer size,
                                                               @RequestParam Integer no,
@@ -41,9 +35,6 @@ public class UserCenterApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 分页查询用户空间收藏
-     */
     @GetMapping("/user-center-collections")
     public JsonResponse<Map<String, Object>> pageListUserCenterCollections(@RequestParam Integer size,
                                                                            @RequestParam Integer no,
@@ -53,9 +44,6 @@ public class UserCenterApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 添加收藏分组
-     */
     @PostMapping("/user-center-collection-groups")
     public JsonResponse<String> addUserCollectionGroups(@RequestBody VideoCollectionGroup videoCollectionGroup){
         Long userId = userSupport.getCurrentUserId();
@@ -64,9 +52,6 @@ public class UserCenterApi {
         return JsonResponse.success();
     }
 
-    /**
-     * 查询用户关注分组
-     */
     @GetMapping("/user-center-following-groups")
     public JsonResponse<List<FollowingGroup>> getUserCenterFollowingGroups(){
         Long userId = userSupport.getCurrentUserId();
@@ -74,9 +59,6 @@ public class UserCenterApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 分页查询用户关注
-     */
     @GetMapping("/user-center-followings")
     public JsonResponse<PageResult<UserFollowing>> pageListUserCenterFollowings(@RequestParam Integer size,
                                                                           @RequestParam Integer no,
@@ -87,9 +69,6 @@ public class UserCenterApi {
         return new JsonResponse<>(list);
     }
 
-    /**
-     * 分页查询用户粉丝
-     */
     @GetMapping("/user-center-fans")
     public JsonResponse<PageResult<UserFollowing>> pageListUserFans(@RequestParam Integer size,
                                                                     @RequestParam Integer no){
@@ -98,9 +77,6 @@ public class UserCenterApi {
         return new JsonResponse<>(result);
     }
 
-    /**
-     * 计算用户粉丝总数
-     */
     @GetMapping("/user-center-fan-counts")
     public JsonResponse<Long> countUserFans(){
         Long userId = userSupport.getCurrentUserId();
