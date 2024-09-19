@@ -1,6 +1,5 @@
 package com.enjoy.video.service;
 
-
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.enjoy.video.dao.DanmuDao;
@@ -34,10 +33,6 @@ public class DanmuService {
         danmuDao.addDanmu(danmu);
     }
 
-    /**
-     * 查询策略是优先查redis中的弹幕数据，
-     * 如果没有的话查询数据库，然后把查询的数据写入redis当中
-     */
     public List<Danmu> getDanmus(Long videoId,
                                  String startTime, String endTime) throws Exception {
 
