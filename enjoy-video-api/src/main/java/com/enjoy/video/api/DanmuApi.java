@@ -1,6 +1,5 @@
 package com.enjoy.video.api;
 
-
 import com.enjoy.video.api.support.UserSupport;
 import com.enjoy.video.domain.Danmu;
 import com.enjoy.video.domain.JsonResponse;
@@ -37,5 +36,4 @@ public class DanmuApi {
         }
         return new JsonResponse<>(list);
     }
-
 }
