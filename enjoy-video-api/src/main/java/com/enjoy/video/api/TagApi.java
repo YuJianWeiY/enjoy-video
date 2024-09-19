@@ -1,4 +1,5 @@
 package com.enjoy.video.api;
+
 import com.enjoy.video.domain.JsonResponse;
 import com.enjoy.video.domain.Tag;
 import com.enjoy.video.service.TagService;
@@ -6,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 public class TagApi {
@@ -19,7 +19,5 @@ public class TagApi {
         Long tagId = tagService.addTag(tag);
         return new JsonResponse<>(tagId);
     }
-
-
 
 }
