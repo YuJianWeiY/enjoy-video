@@ -401,10 +401,6 @@ public class VideoService {
         return videoDao.getVideoViewCounts(videoId);
     }
 
-    /**
-     * 基于用户的协同推荐
-     * @param userId 用户id
-     */
     public List<Video> recommend(Long userId) throws TasteException {
         List<UserPreference> list = videoDao.getAllUserPreference();
         //创建数据模型
@@ -423,12 +419,6 @@ public class VideoService {
         return videoDao.batchGetVideosByIds(itemIds);
     }
 
-    /**
-     * 基于内容的协同推荐
-     * @param userId 用户id
-     * @param itemId 参考内容id（根据该内容进行相似内容推荐）
-     * @param howMany 需要推荐的数量
-     */
     public List<Video> recommendByItem(Long userId, Long itemId, int howMany) throws TasteException {
         List<UserPreference> list = videoDao.getAllUserPreference();
         //创建数据模型
