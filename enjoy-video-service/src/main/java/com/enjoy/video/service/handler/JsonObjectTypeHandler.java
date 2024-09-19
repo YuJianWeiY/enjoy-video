@@ -15,17 +15,11 @@ import java.sql.SQLException;
 @MappedJdbcTypes(JdbcType.LONGVARCHAR)
 public class JsonObjectTypeHandler extends BaseTypeHandler<JSONObject> {
 
-    /**
-     * 设置非空参数
-     */
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, JSONObject parameter, JdbcType jdbcType) throws SQLException {
         ps.setString(i, String.valueOf(parameter.toJSONString()));
     }
 
-    /**
-     * 根据列名，获取可以为空的结果
-     */
     @Override
     public JSONObject getNullableResult(ResultSet rs, String columnName) throws SQLException {
         String sqlJson = rs.getString(columnName);
@@ -35,9 +29,6 @@ public class JsonObjectTypeHandler extends BaseTypeHandler<JSONObject> {
         return null;
     }
 
-    /**
-     * 根据列索引，获取可以为空的结果
-     */
     @Override
     public JSONObject getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         String sqlJson = rs.getString(columnIndex);
