@@ -157,8 +157,6 @@ public class FastDFSUtil {
         fastFileStorageClient.deleteFile(filePath);
     }
 
-
-
     public void viewVideoOnlineBySlices(HttpServletRequest request,
                                         HttpServletResponse response,
                                         String path) throws Exception{
