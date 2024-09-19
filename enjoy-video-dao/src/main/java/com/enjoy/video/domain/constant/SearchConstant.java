@@ -23,5 +23,4 @@ public interface SearchConstant {
     //用户查询-粉丝数由低到高
     public static final String USER_FAN_COUNT_ASC = "6";
 
-
 }
