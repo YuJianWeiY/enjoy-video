@@ -36,6 +36,4 @@ public class UserSupport {
             throw new ConditionException("非法用户！");
         }
     }
-
-
 }
