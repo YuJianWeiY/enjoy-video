@@ -15,25 +15,34 @@ public class Video {
     private Long id;
 
     @Field(type = FieldType.Long)
-    private Long userId;//用户id
+    //用户id
+    private Long userId;
 
-    private String url; //视频链接
+    //视频链接
+    private String url;
 
-    private String thumbnail;//封面
-
-    @Field(type = FieldType.Text)
-    private String title; //标题
-
-    private String type;// 0自制 1转载
-
-    private String duration;//时长
-
-    private String area;//分区
-
-    private List<VideoTag> videoTagList;//标签列表
+    //封面
+    private String thumbnail;
 
     @Field(type = FieldType.Text)
-    private String description;//简介
+    //标题
+    private String title; 
+
+    //0自制 1转载
+    private String type;
+
+    //时长
+    private String duration;
+
+    //分区
+    private String area;
+
+    //标签列表
+    private List<VideoTag> videoTagList;
+
+    @Field(type = FieldType.Text)
+    //简介
+    private String description;
 
     @Field(type = FieldType.Date)
     private Date createTime;
