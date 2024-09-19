@@ -5,9 +5,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-/**
- * IP工具类
- */
 public class IpUtil {
 
 	public static String getIP(HttpServletRequest httpServletRequest) {
