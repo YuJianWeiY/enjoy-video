@@ -18,7 +18,6 @@ public class SearchContentApi {
     @Autowired
     private SearchContentService searchContentService;
 
-
     @GetMapping("/search-counts")
     public JsonResponse<Map<String, Object>> countBySearchTxt(String searchTxt){
         Map<String, Object> result = searchContentService.countBySearchTxt(searchTxt);
