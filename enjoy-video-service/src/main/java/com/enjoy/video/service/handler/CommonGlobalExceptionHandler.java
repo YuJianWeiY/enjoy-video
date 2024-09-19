@@ -1,6 +1,5 @@
 package com.enjoy.video.service.handler;
 
-
 import com.enjoy.video.domain.JsonResponse;
 import com.enjoy.video.domain.exception.ConditionException;
 import org.springframework.core.Ordered;
