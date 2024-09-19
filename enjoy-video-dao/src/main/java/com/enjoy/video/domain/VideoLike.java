@@ -1,6 +1,5 @@
 package com.enjoy.video.domain;
 
-
 import java.util.Date;
 
 public class VideoLike {
