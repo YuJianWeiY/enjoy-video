@@ -18,7 +18,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Component
 public class ImageUtil {
 
@@ -64,9 +63,6 @@ public class ImageUtil {
         return result.getBody();
     }
 
-    /**
-     * 灰度图转为纯黑白图
-     */
     public BufferedImage convert(String labelmapBase64, int realWidth, int realHeight) {
         try {
             byte[] bytes = Base64.getDecoder().decode(labelmapBase64);
@@ -77,7 +73,7 @@ public class ImageUtil {
             for (int i = 0; i < realWidth; i++) {
                 for (int j = 0; j < realHeight; j++) {
                     int rgb = newImage.getRGB(i, j);
-                    grayImage.setRGB(i, j, rgb * 255);  //将像素存入缓冲区
+                    grayImage.setRGB(i, j, rgb * 255); 
                 }
             }
             return grayImage;
@@ -106,15 +102,9 @@ public class ImageUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // 对字节数组进行Base64编码，得到Base64编码的字符串
-//        BASE64Encoder encoder = new BASE64Encoder();
-//        return encoder.encode(data);
         return org.apache.commons.codec.binary.Base64.encodeBase64String(data);
     }
 
-    /**
-     * 百度获取Token
-     */
     private String getAuth() throws Exception{
         // 获取token地址
         StringBuilder sb = new StringBuilder(authUrl);
