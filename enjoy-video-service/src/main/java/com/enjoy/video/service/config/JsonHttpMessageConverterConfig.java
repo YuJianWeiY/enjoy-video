@@ -17,7 +17,6 @@ import java.util.List;
 @Configuration
 public class JsonHttpMessageConverterConfig {
 
-
     public static void main(String[] args){
         List<Object> list = new ArrayList<>();
         Object o = new Object();
